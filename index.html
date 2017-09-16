@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<title>mose</title>
+<header>
+<link rel="stylesheet" href="new.css">
+<link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans" > 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="new2.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+
+</header>
+<body>
+    
+	<?php  
+                                 //php mail sender
+	
+     $sender=$senderEmail=$check="";
+	  if($_SERVER["REQUEST_METHOD"]=="POST"){
+      if(isset($_POST["submit"])) {
+        //check if name is empty
+         if(empty($_POST["name"])){
+		        $nameError="Name required";
+		          $check=1;
+		  
+		   }else{
+		     $sender=$_POST["name"];
+         //verify name has been written correctly
+			  if (!preg_match("/^[a-zA-Z ]*$/",$sender)){
+           $nameError2="Only letters and white space allowed";
+			      
+						 $check=1;
+			  }
+			  
+		   } if($check==1){}else{
+        //check if email address is empty
+		   if(empty($_POST["Email"])){
+        $emailError="Email Required";
+		         
+					   $check=1;
+		   
+		      }else{
+		      $senderEmail=$_POST["Email"];
+          //verify format the email is correct
+			
+		          }
+		   }
+         $recipient="mosesgathuku95@gmail";
+         $subject="Form to email message";
+       
+         //take the message inputed by the user
+         $message=$_POST["message"];
+
+            //arrange the message
+         $mailBody="Name: $sender\nEmail: $senderEmail\n\n$message";
+          //mail funtion sends the message
+          mail($recipient, $subject, $mailBody, "From: $sender <$senderEmail>");
+            if($check==1){
+              //do nothing
+						 }else{
+
+              $thankyou="thank you for your comment";
+                      
+						 }
+    }
+	}
+  
+  ?>
+     
+      
+      <div class="w3-content w3-bars" >
+  
+       <a style="text-decoration:none;"href="#"> <span id="f">MOSES GATHUKU</span></a>
+       <a href="#mose"style="position:relative;left:45%">  <button class="w3-bar-item w3-button "> <i class="fa fa-home w3-text-teal" style="font-size:25px"></i> HOME</button></a>
+	   <a href="#about" style="position:relative;left:45%"> <button class=" w3-button "><i class="fa fa-info-circle w3-text-teal" style="font-size:25px"></i> ABOUT</button></a>
+       <a href="#resume" style="position:relative;left:45%">  <button class="w3-bar-item w3-button"><i class="fa fa-certificate w3-text-teal" style="font-size:25px"></i> RESUME</button></a>
+       <a href="#gallery" style="position:relative;left:45%">  <button class="w3-bar-item w3-button"><i class="fa fa-picture-o w3-text-teal" style="font-size:25px"></i> GALLELY</button></a>
+
+        </div>
+<div class="w3-container w3-content"id="mose" style="height:720px;">
+
+<h2 style="font-size:60px; position:relative; top:24%">web developer $ network engineer</h2>
+<h3 style="position:relative; top:26%";>Am here because am passionate about Technology.</h3>
+  <!--comment fields-->
+       <div class=" w3-container w3-card-4  " style="margin-right:430px;margin-left:430px; margin-top:14%">
+		    <div class="w3-container w3-brown w3-opacity">
+		    <h3> Leave a Comment<h3>
+		    </div>
+		     <form class="w3-container" action="?action" method="POST">
+		     <p> <input style="font-family:Century Gothic" class="w3-input w3-border w3-opacity" placeholder="Name" name="name" type ="text" required="yes"></p>
+			 <p><input style="font-family:Century Gothic" class="w3-input w3-border w3-opacity" placeholder="Email Address" name="Email" type="email" required="yes"></p>
+			 <p> <textarea style="font-family:Century Gothic" class="w3-input w3-border w3-sand w3-opacity" name="message" placeholder="Enter text here"type="textArea"></textarea></p>
+			  <p><input style="font-family:Century Gothic"class="w3-brown w3-input w3-round w3-opacity" type="submit" value="Send" name="submit"><p>
+			</form>
+			  
+		 </div>
+</div>
+ 	 
+
+
+<div id="about">
+<h3>Discover who i am as person beside being a developer and a network engineer</h3>
+<h2 style="font-size:60px">my passion and personality</h2>
+</div>
+       <!--about div-->
+<div id="passion">
+<h4><i class=" w3-container fa fa-arrow-down" ></i>A few fact about Myself</h4>
+<p  style="font-family:Century Gothic">During the warmer days, I enjoy traveling to some great downhill ,visiting friend or finding a remote area somewhere to rest.
+ Although the majority of the time, you will find me behind a computer screen. 
+I am a passionate of listening to music and listening to other people ideas.
+ Reading is one of thing that has contributed to knowing what am supposed to be</p>
+</div>
+<div class="w3-container" >
+<h4><i class="fa fa-arrow-down" aria-hidden="true"></i>Understanding My passion</h4>
+<p style="font-family:Century Gothic;">Am passionate in everything related to technoly. i follow up in the most recent changes and innovation in Technology.
+My best assets are my creativity, my feeling with technology and my passion.
+. I have worked very hard to get where I am today, but I'm just as passionate about where my career is leading me.
+ The challenges that I deal with on a day-to-day basis I find meaningful and rewarding. Bottom line: 
+I honestly love what I do and I will do whatever it takes to further my career. 
+</p>
+</div>
+<div id="resume">
+<h3>Find out what i have accomplished over the years.</h3>
+<h2  style="font-size:60px">dig a little depeer<h2>
+
+
+  <a href="file.pdf"><button class="w3-button w3-border w3-hover-purple w3-round-large"> <i class="fa fa-download w3-text-teal" ></i> Download Resume</button></a>
+</div>
+
+
+
+
+ 
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top"> <!--style="max-width:1400px;">
+
+  <!-The Grid -->
+  <div class="w3-row-padding">
+  
+    <!-- Left Column -->
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-display-container">
+          <img src="images/profile.jpg" style="width:100%" alt="mose">
+          <div class="w3-display-bottomleft w3-container w3-text-black">
+            <h2>Moses Gathuku</h2>
+          </div>
+        </div>
+        <div class="w3-container">
+          <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>Developer</p>
+          <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Thika, Kenya</p>
+          <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>mosesgathuku95@gmail.com</p>
+          <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>+254705112855</p>
+          <hr>
+
+          <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+          <p>Web Development</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:40%">40%</div>
+          </div>
+          <p>Networking</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:30%">
+              <div class="w3-center w3-text-white">30%</div>
+            </div>
+          </div>
+          <p>java programming</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:55%">55%</div>
+          </div>
+          <p>Graphic Design</p>
+          <div class="w3-light-grey w3-round-xlarge w3-small">
+            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">50%</div>
+          </div>
+          <br>
+
+          <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+          <p>English</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:90%"></div>
+          </div>
+          <p>kiswahili</p>
+          <div class="w3-light-grey w3-round-xlarge">
+            <div class="w3-round-xlarge w3-teal" style="height:24px;width:80%"></div>
+          </div>
+          
+          <br>
+        </div>
+      </div><br>
+
+    <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+    
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Front End Developer / Lericks Developers</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+          <p>Designing websites for different clients</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>ICT Oficer / Jbs Systems</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Sep 2016-Jan 2017</h6>
+          <p>Responsible for implmentation,traing and maintaining of Jbs system for clients</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Printing Technician / Gituamba secondary School</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+          <p>Responsiple for printing and Ensuring exam are ready. </p><br>
+        </div>
+      </div>
+
+      <div class="w3-container w3-card-2 w3-white">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Kisii university</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2015 - date</h6>
+          <p>Bsc Applied Computer Sience</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Cisco Networking Academy</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016</h6>
+          <p>Cisco Certified Network Associate</p>
+          <hr>
+        </div>
+        <div class="w3-container">
+          <h5 class="w3-opacity"><b>Gituamba High School</b></h5>
+          <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2011-2014</h6>
+          <p>Kenya Certificate of Secondary Education</p><br>
+        </div>
+      </div>
+
+    <!-- End Right Column -->
+    </div>
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+   
+   <!--My Galley-->
+   
+         <div id="gallery"class="w3-container  w3-teal" style="height:180px">
+		 <h1 class="w3-center">LOOK AT MY GALLERY<H1>
+		 </div>
+		 
+        <div class="w3-content w3-section" style="max-width:900px">
+      
+        
+         <img class="mySlides w3-animate-fading" src="images/image1.jpg" style="width=100%">
+         <img class="mySlides w3-animate-fading" src="images/image2.jpg" style="width=100%">
+         <img class="mySlides w3-animate-fading" src="images/image3.jpg" style="width=100%">
+         <img class="mySlides w3-animate-fading" src="images/image4.jpg" style="width=100%">
+         <img class="mySlides w3-animate-fading" src="images/image5.jpg" style="width=100%">
+         <img class="mySlides w3-animate-fading" src="images/image6.jpg" style="width=100%">
+
+      </div>
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 9000);
+}
+</script>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+   <div class="w3-third">
+  <p>Find me on social media.</p>
+   <br>
+   
+   <a href="#"class="w3-tooltip"><i class="fa fa-facebook w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Facebook</span></a>
+   <a href="#"class="w3-tooltip"><i class="fa fa-twitter w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Twitter</span></a>
+   <a href="#"class="w3-tooltip"><i class="fa fa-instagram w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Instagram</span></a>
+   <a href="#"class="w3-tooltip"><i class="fa fa-snapchat w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Snapchat</span></a>
+   <a href="#"class="w3-tooltip"><i class="fa fa-github w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Github</span></a>
+   <a href="#"class="w3-tooltip"><i class="fa fa-gitlab w3-text-orange" style="font-size:30px"></i><span style="position:absolute;left:0px;bottom:35Px"class="w3-text w3-tag">Gitlab</span></a>
+	
+	
+	
+
+	 
+  </div>
+   <div class="w3-third w3-container">
+  <p>Powered by <a href="" target="_blank">Lericks Developers</a></p>
+   </div>
+   <div class="w3-third">
+   <p>Designed by</p>
+   <h1><span class="w3-text-yellow">G</span><span class="w3-text-green">a</span>t<span class="w3-text-purple">h</span>u<span class="w3-text-deep-orange">k</span><span class="w3-text-pink">u</span><h1>
+   
+   </div>
+</footer>
+ 
+</body>
+<script src="plugins.js"></script>
+</html>
